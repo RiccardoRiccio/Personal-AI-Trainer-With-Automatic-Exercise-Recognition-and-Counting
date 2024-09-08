@@ -45,16 +45,16 @@ def main():
         tfflie = tempfile.NamedTemporaryFile(delete=False)
 
         # if no video uploaded then use a demo
-        if not video_file_buffer:
-            DEMO_VIDEO = 'demo_2.mp4'
-            cap = cv2.VideoCapture(DEMO_VIDEO)
-            tfflie.name = DEMO_VIDEO
+        # if not video_file_buffer:
+        #     DEMO_VIDEO = 'demo_2.mp4'
+        #     cap = cv2.VideoCapture(DEMO_VIDEO)
+        #     tfflie.name = DEMO_VIDEO
 
         # if video is uploaded then analyze the video
-        else:
-            tfflie.write(video_file_buffer.read())
-            cap = cv2.VideoCapture(tfflie.name)
-        st.markdown('-------')
+        # else:
+        #     tfflie.write(video_file_buffer.read())
+        #     cap = cv2.VideoCapture(tfflie.name)
+        # st.markdown('-------')
 
         # Visualize Video before analysis
         st.sidebar.text('Input Video')
@@ -122,22 +122,22 @@ def main():
         st.write(' Click button to start training')
         start_button = st.button('Start Exercise')
 
-        # Visualize video that explain the correct forms for the exercises
-        if exercise_general == 'Bicept Curl':
-            st.write('## Bicept Curl Execution Video')
-            st.video('curl_form.mp4')
+        # # Visualize video that explain the correct forms for the exercises
+        # if exercise_general == 'Bicept Curl':
+        #     st.write('## Bicept Curl Execution Video')
+        #     st.video('curl_form.mp4')
 
-        elif exercise_general == 'Push Up':
-            st.write('## Push Up Execution Video')
-            st.video('push_up_form.mp4')
+        # elif exercise_general == 'Push Up':
+        #     st.write('## Push Up Execution Video')
+        #     st.video('push_up_form.mp4')
 
-        elif exercise_general == 'Squat':
-            st.write('## Squat Execution Video')
-            st.video('squat_form_2.mp4')
+        # elif exercise_general == 'Squat':
+        #     st.write('## Squat Execution Video')
+        #     st.video('squat_form_2.mp4')
 
-        elif exercise_general == 'Shoulder Press':
-            st.write('## Shoulder Press Execution')
-            st.video('shoulder_press_form.mp4')
+        # elif exercise_general == 'Shoulder Press':
+        #     st.write('## Shoulder Press Execution')
+        #     st.video('shoulder_press_form.mp4')
 
         if start_button:
             time.sleep(2)  # Add a delay of 2 seconds
