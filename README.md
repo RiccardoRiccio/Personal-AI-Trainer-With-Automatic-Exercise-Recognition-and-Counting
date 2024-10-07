@@ -1,67 +1,60 @@
-Fitness AI Coach: Automatic Exercise Recognition and Counting
+# Fitness AI Coach: Automatic Exercise Recognition and Counting
 
 This project is an AI-powered application that leverages Computer Vision, Pose Estimation, and Machine Learning to accurately track exercise repetitions during workouts. The goal is to enhance fitness routines by providing real-time feedback through an easy-to-use web interface.
 
-Demo
+## Demo
 
 Watch the Fitness AI Coach in action:
 
+---
+
+## Table of Contents
+- Project Structure
+- Getting Started
+- Features
+- Technologies Used
+- Overview of the WebApp
+- Implementation Details
+- Objectives
+
+---
+
+## Project Structure
+- `main.py`: Runs the Streamlit app.
+- `ExerciseAiTrainer.py`: Contains exercise-specific pose estimation logic.
+- `AiTrainer_utils.py`: Utility functions for image processing and distance calculations.
+- `PoseModule2.py`: Handles body pose estimation using MediaPipe.
+- `chatbot.py`: Implements the chatbot using the OpenAI API.
+- `final_ldm_extractor.py`: Extracts landmarks from videos.
+- `final_preprocess.py`: Preprocesses landmarks to generate features for model training.
+- `final_train_lstm_and_encoders.py` / `final_train_bilstm_and_encoders.py`: Scripts for training LSTM and BiLSTM models.
+- `requirements.txt`: List of required Python libraries.
+- `shoulder_press_form.mp4`: Sample video showing proper form for exercises.
+- `thesis_bidirectionallstm_label_encoder.pkl` / `thesis_bidirectionallstm_scaler.pkl`: Pre-trained models for label encoding and feature scaling.
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Python must be installed on your machine.
+- It's recommended to use a virtual environment to manage dependencies.
+
+### Installation
+```bash
+# Clone this repository:
+git clone <repository-url>
+
+# Install the required dependencies:
+pip install -r requirements.txt
 
 
-Table of Contents
+## How to Run
 
-Project Structure
+# To run the application, execute the following command in your terminal:
+streamlit run main.py
 
-Getting Started
-
-Features
-
-Technologies Used
-
-Project Structure
-
-main.py: Runs the Streamlit app.
-
-ExerciseAiTrainer.py: Contains exercise-specific pose estimation logic.
-
-AiTrainer_utils.py: Utility functions for image processing and distance calculations.
-
-PoseModule2.py: Handles body pose estimation using MediaPipe.
-
-chatbot.py: Implements the chatbot using the OpenAI API.
-
-final_ldm_extractor.py: Extracts landmarks from videos.
-
-final_preprocess.py: Preprocesses landmarks to generate features for model training.
-
-final_train_lstm_and_encoders.py / final_train_bilstm_and_encoders.py: Scripts for training LSTM and BiLSTM models.
-
-requirements.txt: List of required Python libraries.
-
-shoulder_press_form.mp4: Sample video showing proper form for exercises.
-
-thesis_bidirectionallstm_label_encoder.pkl / thesis_bidirectionallstm_scaler.pkl: Pre-trained models for label encoding and feature scaling.
-
-Getting Started
-
-Prerequisites
-
-Python must be installed on your machine.
-
-It's recommended to use a virtual environment to manage dependencies.
-
-Installation
-
-Clone this repository:
-
-Install the required dependencies:
-
-How to Run
-
-To run the application, execute the following command in your terminal:
-
-Features
-
+# Features
 Real-Time Exercise Tracking: Tracks repetitions for Bicep Curls, Push-Ups, Squats, and Shoulder Press using pose estimation and angle calculations.
 
 Auto Classify Mode: Automatically classifies exercises in real-time using a BiLSTM model, eliminating the need for manual selection.
@@ -72,8 +65,7 @@ Chatbot Integration: Virtual personal trainer utilizing OpenAI to answer fitness
 
 Voice Commands: Users can start and stop exercise tracking via speech recognition.
 
-Technologies Used
-
+# Technologies Used
 Pose Estimation: Utilizes MediaPipe to extract key body landmarks and monitor movement.
 
 Machine Learning: LSTM and BiLSTM models for real-time exercise classification.
@@ -84,50 +76,50 @@ Streamlit: Web interface for interaction.
 
 Python Libraries: OpenCV, MediaPipe, Streamlit, and more for backend processing.
 
-Overview of the WebApp
-
+# Overview of the WebApp
 The Fitness AI Coach is a web application built with Streamlit, aimed at providing users with tools for fitness tracking, real-time exercise classification, repetition counting, and chatbot support.
 
-App Navigation
-
+# App Navigation
 The main navigation sidebar allows users to access the following features:
 
-Video Analysis: Users can upload exercise videos to count repetitions based on pose estimation.
-
-Webcam Mode: Users can perform exercises in front of their webcam for real-time repetition counting.
-
-Auto Classify Mode: Automatically identifies exercises in real-time and counts repetitions accordingly.
-
-Chatbot: Acts as a fitness coach to provide fitness guidance using the OpenAI API.
+- Video Analysis: Users can upload exercise videos to count repetitions based on pose estimation.
+- Webcam Mode: Users can perform exercises in front of their webcam for real-time repetition counting.
+- Auto Classify Mode: Automatically identifies exercises in real-time and counts repetitions accordingly.
+- Chatbot: Acts as a fitness coach to provide fitness guidance using the OpenAI API.
 
 The application is designed to be modular and user-friendly, with clear instructions and an intuitive interface for each feature. The system also provides visual cues and instructional videos to assist users with exercise form and repetition counts.
 
-Implementation Details
+# Implementation Details
 
-Exercise Classifier
-
+## Exercise Classifier
 The exercise classifier is built using a mix of real and synthetic datasets to improve generalization. The main sources include:
 
-Kaggle Workout Dataset: Real-world videos of various exercises.
-
-InfiniteRep Dataset: Synthetic videos featuring avatars performing exercises to add diversity.
-
-Similar Dataset: Videos from online sources to cover realistic variations.
+- Kaggle Workout Dataset: Real-world videos of various exercises.
+- InfiniteRep Dataset: Synthetic videos featuring avatars performing exercises to add diversity.
+- Similar Dataset: Videos from online sources to cover realistic variations.
 
 The classification model employs LSTM and BiLSTM networks to process extracted landmarks and classify exercises based on joint angles and movement patterns. Hyperparameter tuning and evaluation were conducted using metrics like accuracy, precision, recall, and F1-score.
 
-Repetition Counting
-
+## Repetition Counting
 The repetition counting mechanism is implemented in two modes:
 
-Manual Mode: Users manually select the exercise, and angle-based thresholds are applied to count repetitions.
-
-Automatic Mode: A BiLSTM model classifies exercises, after which specific counting logic is applied based on identified body angles.
+- Manual Mode: Users manually select the exercise, and angle-based thresholds are applied to count repetitions.
+- Automatic Mode: A BiLSTM model classifies exercises, after which specific counting logic is applied based on identified body angles.
 
 The counting logic relies on tracking "up" and "down" movements detected through angle variations, ensuring that the repetitions are accurately counted.
 
-Chatbot Integration
-
+## Chatbot Integration
 The chatbot feature uses OpenAI's GPT-3.5-turbo model to answer user questions related to fitness and workouts. The chatbot is integrated into the web application using LangChain’s ConversationChain to maintain context and provide more meaningful responses.
 
 A warning is displayed to inform users that the chatbot may occasionally provide incorrect information, and critical decisions should be verified with a professional.
+
+# Objectives
+The primary objective of this project is to demonstrate the potential of AI for enhancing fitness tracking. Key goals include:
+
+- Creating a user-friendly application for tracking exercises.
+- Providing real-time feedback on exercise form using pose estimation.
+- Training machine learning models to classify four common exercises.
+- Offering automated repetition counting based on user activity.
+- Including a chatbot to answer fitness-related questions and provide general workout advice.
+- Evaluating the application under different real-world conditions to assess robustness.
+- Exploring future improvements, such as expanding the range of supported exercises and improving chatbot reliability.
