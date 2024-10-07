@@ -5,6 +5,7 @@ This project is an AI-powered application that leverages Computer Vision, Pose E
 ## Demo
 
 Watch the Fitness AI Coach in action:
+[![Fitness AI Coach Gameplay Demo](https://img.youtube.com/vi/T-vpCzy17ik/0.jpg)](https://youtu.be/GPmDPB1bSmc "Personal AI Trainer With Automatic Exercise Recognition and Counting")
 
 ---
 
