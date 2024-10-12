@@ -1,6 +1,7 @@
 # Personal AI Trainer With Automatic Exercise Recognition and Counting
 
 This project is an AI-powered application that leverages Computer Vision, Pose Estimation, and Machine Learning to accurately track exercise repetitions during workouts. The goal is to enhance fitness routines by providing real-time tracking through an easy-to-use web interface.
+
 [This project comes from my Bachelor thesis and you can read it here: https://drive.google.com/file/d/12B56iRqxp-t6ib-eiDtiG8oVQ4OYW5ud/view?usp=sharing]
 
 ## Demo
