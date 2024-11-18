@@ -2,11 +2,12 @@
 
 This project is an AI-powered application that leverages Computer Vision, Pose Estimation, and Machine Learning to accurately track exercise repetitions during workouts. The goal is to enhance fitness routines by providing real-time tracking through an easy-to-use web interface.
 
+Datasets available at "https://www.kaggle.com/datasets/riccardoriccio/real-time-exercise-recognition-dataset".
+
 ## Demo
 
 Watch the Fitness AI Coach in action:
 [![Watch the video](https://img.youtube.com/vi/GPmDPB1bSmc/maxresdefault.jpg)](https://www.youtube.com/watch?v=GPmDPB1bSmc)
-
 
 ---
 
@@ -25,6 +26,11 @@ Watch the Fitness AI Coach in action:
 - [Technologies Used](#technologies-used)
 
 ---
+# WARNING
+
+1) In the current repository, the model used in the application is the "BiLSTM Invariant," which is a model trained without utilizing the raw (x, y, z) coordinates. Instead, it relies solely on angles and normalized distances. The best-performing model is described in the code file "train_bidirectionallstm.py", which incorporates both raw coordinates and angles.
+
+2) In the current repository, the instructional videos are not included (except for shoulder_press_form.mp4). Consequently, after running the current repository, the other instructional videos will not be available.
 
 ## Project Structure
 - `main.py`: Runs the Streamlit app.
@@ -32,12 +38,13 @@ Watch the Fitness AI Coach in action:
 - `AiTrainer_utils.py`: Utility functions for image processing and distance calculations.
 - `PoseModule2.py`: Handles body pose estimation using MediaPipe.
 - `chatbot.py`: Implements the chatbot using the OpenAI API.
-- `final_ldm_extractor.py`: Extracts landmarks from videos.
-- `final_preprocess.py`: Preprocesses landmarks to generate features for model training.
-- `final_train_lstm_and_encoders.py` / `final_train_bilstm_and_encoders.py`: Scripts for training LSTM and BiLSTM models.
+- `extract_features.py`: Extracts landmarks and angles from videos.
+- `create_sequence_of_features.py`:  Generate the final dataset with sequence of 30 frames with corresponding features
+- `train_bidirectionallstm.py`: Scripts for training proposed BiLSTM models (with mixed of coordinates and angle features).
 - `requirements.txt`: List of required Python libraries.
 - `shoulder_press_form.mp4`: Sample video showing proper form for exercises.
-- `thesis_bidirectionallstm_label_encoder.pkl` / `thesis_bidirectionallstm_scaler.pkl`: Pre-trained models for label encoding and feature scaling.
+- `thesis_bidirectionallstm_label_encoder.pkl` / `thesis_bidirectionallstm_scaler.pkl`: Pre-trained models for label encoding and feature scaling (for the model "BiLSTM Invariant").
+- ` final_forthesis_bidirectionallstm_and_encoders_exercise_classifier_model.h5`: Pre-trained "BiLSTM Invariant" model
 
 ---
 
@@ -64,6 +71,11 @@ Watch the Fitness AI Coach in action:
 
    ```bash
    pip install -r requirements.txt
+4. Run the app:
+
+   ```bash
+     streamlit run main.py
+      
 
 ## Overview of the WebApp
 
