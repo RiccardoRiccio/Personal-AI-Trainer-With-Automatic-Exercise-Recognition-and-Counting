@@ -4,6 +4,9 @@ This project is an AI-powered application that leverages Computer Vision, Pose E
 
 Datasets available at "[https://www.kaggle.com/datasets/riccardoriccio/real-time-exercise-recognition-dataset](https://www.kaggle.com/datasets/riccardoriccio/real-time-exercise-recognition-dataset)".
 
+This project is based on the paper: "Real-Time Fitness Exercise Classification and Counting from Video Frames"
+Link to paper: "https://arxiv.org/abs/2411.11548"
+
 ## Demo
 
 Watch the Fitness AI Coach in action:
